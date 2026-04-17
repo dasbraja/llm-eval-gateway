@@ -20,7 +20,7 @@ import vertexai
 from fastapi import FastAPI
 
 # ── Vertex AI init ────────────────────────────
-GCP_PROJECT: str = os.environ.get("GCP_PROJECT", "bdas-493785")
+GCP_PROJECT: str = os.environ.get("GCP_PROJECT", "your-gcp-project-id")
 GCP_LOCATION: str = os.environ.get("GCP_LOCATION", "us-central1")
 
 vertexai.init(project=GCP_PROJECT, location=GCP_LOCATION)

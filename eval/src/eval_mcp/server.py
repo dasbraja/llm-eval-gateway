@@ -37,7 +37,7 @@ from src.eval_mcp.tools import run_pairwise, run_pointwise
 
 # ── Vertex AI init ────────────────────────────
 vertexai.init(
-    project=os.environ.get("GCP_PROJECT", "bdas-493785"),
+    project=os.environ.get("GCP_PROJECT", "your-project-name"),
     location=os.environ.get("GCP_LOCATION", "us-central1"),
 )
 

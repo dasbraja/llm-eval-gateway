@@ -36,6 +36,6 @@ def health() -> dict:
     return {
         "status": "ok",
         "judge_model": os.environ.get("JUDGE_MODEL", "gemini-2.5-flash"),
-        "gcp_project": os.environ.get("GCP_PROJECT", "bdas-493785"),
+        "gcp_project": os.environ.get("GCP_PROJECT", "your-project-name"),
         "gcp_location": os.environ.get("GCP_LOCATION", "us-central1"),
     }
