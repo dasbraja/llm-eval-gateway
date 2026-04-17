@@ -1,4 +1,4 @@
-# GenAI Eval Service
+# LLM Eval Gateway
 
 LLM evaluation service backed by Vertex AI.  
 Two endpoints accept 1–5 fully inline metric templates and a list of dataset items per request.
