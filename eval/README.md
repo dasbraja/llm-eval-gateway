@@ -14,7 +14,7 @@ Two endpoints accept 1–5 fully inline metric templates and a list of dataset i
 ## Project structure
 
 ```
-eval/
+llm-eval-gateway/
 ├── .env.example
 ├── .gitignore
 ├── requirements.txt
@@ -43,7 +43,7 @@ eval/
 
 ```bash
 # 1. Enter the project
-cd eval
+cd llm-eval-gateway
 
 # 2. Create and activate a virtual environment
 python -m venv .venv
@@ -66,7 +66,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
 ## Run
 
 ```bash
-# From the eval/ root
+# From the llm-eval-gateway/ root
 uvicorn src.main:app --reload
 ```
 
@@ -436,7 +436,7 @@ The MCP server reuses the same `services/judge.py` logic as the REST API — beh
 ### Project structure (MCP additions)
 
 ```
-eval/
+llm-eval-gateway/
 └── src/
     ├── mcp_main.py           # MCP server entry point
     └── mcp/
@@ -471,12 +471,12 @@ Available template names: `fluency`, `coherence`, `groundedness`, `safety`,
 
 **Stdio** (Claude Desktop / local clients):
 ```bash
-python src/mcp_main.py
+fastmcp run src/mcp_main.py
 ```
 
 **SSE** (remote / browser-based clients):
 ```bash
-python src/mcp_main.py --transport sse --port 8001
+fastmcp run src/mcp_main.py --transport sse --port 8001
 ```
 
 Both servers can run simultaneously — FastAPI on port `8000`, MCP on port `8001`.
@@ -493,7 +493,7 @@ Add the following to `~/Library/Application Support/Claude/claude_desktop_config
     "genai-eval": {
       "command": "python",
       "args": ["src/mcp_main.py"],
-      "cwd": "/absolute/path/to/eval",
+      "cwd": "/Users/brajadas/project/llm-eval-gateway",
       "env": {
         "GCP_PROJECT": "your-gcp-project-id",
         "GCP_LOCATION": "us-central1",
@@ -647,13 +647,13 @@ MCP Inspector connects over **SSE**, so start the MCP server in SSE mode first:
 
 **Terminal 1 — start the MCP server**
 ```bash
-cd eval
+cd llm-eval-gateway
 export GCP_PROJECT=your-gcp-project-id
 export GCP_LOCATION=us-central1
 export JUDGE_MODEL=gemini-2.0-flash-001
 export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
 
-python src/mcp_main.py --transport sse --port 8001
+fastmcp run src/mcp_main.py --transport sse --port 8001
 ```
 
 **Terminal 2 — launch MCP Inspector**
@@ -1121,7 +1121,7 @@ gemini-2.0-flash-001
 uvicorn src.main:app --reload --port 8000
 
 # Terminal 2 — MCP server (SSE for Inspector)
-python src/mcp_main.py --transport sse --port 8001
+fastmcp run src/mcp_main.py --transport sse --port 8001
 
 # Terminal 3 — MCP Inspector
 npx @modelcontextprotocol/inspector
