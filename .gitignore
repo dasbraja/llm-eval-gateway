@@ -3,4 +3,6 @@
 __pycache__/
 *.pyc
 *.pyo
-.DS_Store
+.DS_Store.idea/
+eval/.DS_Store
+.env
